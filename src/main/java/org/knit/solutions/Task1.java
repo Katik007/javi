@@ -17,7 +17,7 @@ public class Task1 implements Solution{
         senior.setNextApprover(director);
 
         // Запросы на одобрение разных сумм
-        junior.processRequest(new Problem("Маленькая проблема, которую легко выполнит мл.менеджер", 20));   // Младший менеджер одобряет
+        junior.processRequest(new Problem("Большая проблема, которую легко выполнит мл.менеджер", 20));   // Младший менеджер одобряет
         junior.processRequest(new Problem("Средняя проблема, которую легко выполнит ст.менеджер", 50));  // Старший менеджер одобряет
         junior.processRequest(new Problem("Серьезная проблема, которую директор с легкостью выполнит", 100)); // Директор одобряет
         junior.processRequest(new Problem("Очень сложная проблема, над которой директор подумает", 500)); // Директор одобряет
