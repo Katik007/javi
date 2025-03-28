@@ -1,14 +1,17 @@
 package org.knit.solutions.lab2.n9;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.Random;
 
 public class Operator implements Runnable {
-    private final double PROBABILITY_OF_FUCKED = 0.4;
+    private final double PROBABILITY_OF_FUCKED = 0.3;
     private final BlockingQueue<Detail> stampingQueue;
     private final BlockingQueue<Detail> reassemblingQueue;
     private final BlockingQueue<Detail> assemblingQueue;
     private final BlockingQueue<Detail> warehouseQueue;
     private final Factory factory;
+    private final Random random = new Random();
+    private final int MAX_STAMPER_DELAY = 2000;
 
     public Operator(
             BlockingQueue<Detail> stampingQueue,
@@ -29,7 +32,7 @@ public class Operator implements Runnable {
         while (true) {
             try {
                 Detail detail = assemblingQueue.take();
-                Thread.sleep(2000);
+                Thread.sleep(random.nextInt(MAX_STAMPER_DELAY));
                 if (Math.random() > PROBABILITY_OF_FUCKED) {
                     warehouseQueue.put(detail);
                     System.out.println("Оператор проверил деталь " + detail.getId() + " и отправил ее на склад");

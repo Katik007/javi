@@ -1,12 +1,15 @@
 package org.knit.solutions.lab2.n9;
 
 import java.util.concurrent.BlockingQueue;
+import java.util.Random;
 
 public class Assembler implements Runnable {
     private final BlockingQueue<Detail> stampingQueue;
     private final BlockingQueue<Detail> reassemblingQueue;
     private final BlockingQueue<Detail> assemblingQueue;
     private final Factory factory;
+    private final Random random = new Random();
+    private final int MAX_STAMPER_DELAY = 2000;
 
     public Assembler(
             BlockingQueue<Detail> stampingQueue,
@@ -26,12 +29,12 @@ public class Assembler implements Runnable {
             try {
                 if (!stampingQueue.isEmpty()) {
                     Detail detail = stampingQueue.take();
-                    Thread.sleep(1500);
+                    Thread.sleep(random.nextInt(MAX_STAMPER_DELAY));
                     assemblingQueue.put(detail);
                     System.out.println("Сборщик собрал деталь " + detail.getId());
                 } else if (!reassemblingQueue.isEmpty()) {
                     Detail detail = reassemblingQueue.take();
-                    Thread.sleep(1000);
+                    Thread.sleep(random.nextInt(MAX_STAMPER_DELAY));
                     assemblingQueue.put(detail);
                     System.out.println("Сборщик пересобрал деталь " + detail.getId());
                 }
