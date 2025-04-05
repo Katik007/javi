@@ -1,8 +1,13 @@
-package org.knit.solutions.lab2.n8;
+package org.knit.solutions;
 
+import org.knit.TaskDescription;
+import org.knit.solutions.lab2.n8.Car;
+import org.knit.solutions.lab2.n8.TrafficLight;
 
-public class Main {
-    public static void main(String[] args) {
+@TaskDescription(taskNumber = 6, taskDescription = "Задача «Перекресток: светофор и машины»")
+public class Task28 implements Solution{
+    @Override
+    public void execute() {
         TrafficLight trafficLight = new TrafficLight();
         Thread threadTrafficLight = new Thread(() -> {
             while (true) {

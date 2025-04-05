@@ -4,6 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.Random;
 
 public class Factory {
     final private BlockingQueue<Detail> stampingQueue = new LinkedBlockingQueue<>();

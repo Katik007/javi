@@ -1,8 +1,12 @@
-package org.knit.solutions.lab2.n6;
+package org.knit.solutions;
 
+import org.knit.TaskDescription;
+import org.knit.solutions.lab2.n6.Railway;
 
-public class Main {
-    public static void main(String[] args) {
+@TaskDescription(taskNumber = 4, taskDescription = "Задача «Железнодорожный переезд»")
+public class Task26 implements Solution{
+    @Override
+    public void execute() {
         Railway railway = new Railway();
         Thread threadCars = new Thread(() -> {
             for (int i = 1; i <= 50; i++) {
